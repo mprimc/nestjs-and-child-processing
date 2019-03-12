@@ -6,6 +6,7 @@ const { fork } = require('child_process');
 @Injectable()
 export class ChildProcessService {
   private childFork = null;
+  private forkNestDBModuleApp = null;
 
   forkChildFile() {
     if (!this.childFork) {
@@ -16,5 +17,12 @@ export class ChildProcessService {
     }
 
     this.childFork.send({ hello: 'world' });
+  }
+  getForkedNestJsDBModuleApp() {
+    if (!this.forkNestDBModuleApp) {
+      const currentPath = process.cwd();
+      this.forkNestDBModuleApp = fork(currentPath + '/src/db/child-db-service');
+    }
+    return this.forkNestDBModuleApp;
   }
 }

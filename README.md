@@ -6,7 +6,7 @@
 [travis-url]: https://travis-ci.org/nestjs/nest
 [linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
 [linux-url]: https://travis-ci.org/nestjs/nest
-  
+
   <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
@@ -27,6 +27,25 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
+Example how you can use child processing to fetch and manipulate response data from DB.
+
+For the first time when you call `/cats` api you will receive response from dbService. All next responses will be returned by components cache, but in the background cache will be updated changed by the forked childProcessor which calls dbService.
+
+This example is proof of concept how you can use child processing.
+Two examples of child processing:
+
+- one example show you how to fork file for child processing
+- second example shows you how to fork whole NestJS module for child processing
+
+Note: This is only proof of concept and It need modification to be used in production environment.
+
+Exposed API:
+
+```
+http://localhost:3000/cats
+
+```
 
 ## Installation
 
@@ -72,4 +91,4 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## License
 
-  Nest is [MIT licensed](LICENSE).
+Nest is [MIT licensed](LICENSE).
