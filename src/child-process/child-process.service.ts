@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
-// tslint:disable-next-line:no-var-requires
+// tslint:disable:no-var-requires
 const { fork } = require('child_process');
+const path = require('path');
+
 // tslint:disable:no-console
 
 @Injectable()
@@ -10,7 +12,7 @@ export class ChildProcessService {
 
   forkChildFile() {
     if (!this.childFork) {
-      this.childFork = fork(__dirname + '/child');
+      this.childFork = fork(path.resolve(__dirname, './child'));
       this.childFork.on('message', msg => {
         console.log('Message from child', msg);
       });
@@ -21,7 +23,8 @@ export class ChildProcessService {
   getForkedNestJsDBModuleApp() {
     if (!this.forkNestDBModuleApp) {
       const currentPath = process.cwd();
-      this.forkNestDBModuleApp = fork(currentPath + '/src/db/child-db-service');
+
+      this.forkNestDBModuleApp = fork(path.resolve(currentPath, './src/db/child-db-service'));
     }
     return this.forkNestDBModuleApp;
   }
