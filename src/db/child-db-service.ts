@@ -6,7 +6,6 @@ import { DbService } from './db.service';
 let service = null;
 async function bootstrap() {
   const app = await NestFactory.create(DbModule);
-  await app.listen(3001);
   service = app.select(DbModule).get(DbService, { strict: true });
 
   process.on('message', async msg => {
