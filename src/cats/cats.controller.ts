@@ -7,6 +7,6 @@ export class CatsController {
   constructor(private readonly catsService: CatsService) {}
   @Get()
   async findAll(): Promise<Cat[]> {
-    return this.catsService.findAll();
+    return await this.catsService.findAll();
   }
 }
