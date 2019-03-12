@@ -28,17 +28,16 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-Example how you can use child processing to fetch and manipulate response data from DB.
+Example of how you can use child processing to fetch and manipulate response data from DB.
 
-For the first time when you call `/cats` api you will receive response from dbService. All next responses will be returned by components cache, but in the background cache will be updated changed by the forked childProcessor which calls dbService.
+For the first time when you call /cats API you will receive a response from dbService. All next responses will be returned by components cache, but in the background, the cache will be updated/changed by the forked childProcessor which calls dbService.
 
-This example is proof of concept how you can use child processing.
-Two examples of child processing:
+This example is proof of concept of how you can use child processing. Two examples of child processing:
 
-- one example show you how to fork file for child processing
-- second example shows you how to fork whole NestJS module for child processing
+- one example shows you how to fork `child` file for child processing
+- the second example shows you how to fork the whole NestJS module for child processing
 
-Note: This is only proof of concept and It need modification to be used in production environment.
+Note: This is only proof of concept and It needs modification to be used in production environment.
 
 Exposed API:
 
