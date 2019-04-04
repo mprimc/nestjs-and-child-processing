@@ -22,9 +22,7 @@ export class ChildProcessService {
   }
   getForkedNestJsDBModuleApp() {
     if (!this.forkNestDBModuleApp) {
-      const currentPath = process.cwd();
-
-      this.forkNestDBModuleApp = fork(path.resolve(currentPath, './src/db/child-db-service'));
+      this.forkNestDBModuleApp = fork(path.resolve(__dirname, '../db/child-db-service'));
     }
     return this.forkNestDBModuleApp;
   }
