@@ -1,6 +1,9 @@
 # dist folder
 dist
 
+# build folder
+build
+
 # Logs
 logs
 *.log
