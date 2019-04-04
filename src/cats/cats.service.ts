@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Cat } from './cat.interface';
-import { DbService } from 'src/db/db.service';
-import { ChildProcessService } from 'src/child-process/child-process.service';
+import { DbService } from '../db/db.service';
+import { ChildProcessService } from '../child-process/child-process.service';
 
 // tslint:disable:no-console
 @Injectable()
@@ -19,7 +19,7 @@ export class CatsService {
     if (!this.forkedDBModuleApp) {
       this.forkedDBModuleApp = this.childProcessService.getForkedNestJsDBModuleApp();
       this.forkedDBModuleApp.on('message', cats => {
-        console.log('Received cats from from ChildDBService', cats);
+        console.log('Received cats from ChildDBService', cats);
         this.cats = cats;
       });
     }
