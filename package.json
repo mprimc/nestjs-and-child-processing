@@ -1,11 +1,16 @@
 {
-  "name": "project",
-  "version": "0.0.0",
+  "name": "child-process",
+  "version": "1.0.0",
   "description": "Example how to use nestjs and child process to scale nestjs application",
   "author": "Miha Primc",
   "license": "MIT",
+  "bin": "dist/main.js",
   "scripts": {
+    "clean": "rimraf dist",
     "build": "tsc -p tsconfig.build.json",
+    "build:compile": "tsc",
+    "build:package": "run-s clean build:compile build:package:script",
+    "build:package:script": "node scripts/build.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "nodemon",
@@ -24,8 +29,10 @@
     "@nestjs/core": "^5.4.0",
     "faker": "^4.1.0",
     "lodash": "^4.17.11",
+    "npm-run-all": "^4.1.5",
+    "pkg": "^4.3.7",
     "reflect-metadata": "^0.1.12",
-    "rimraf": "^2.6.2",
+    "rimraf": "^2.6.3",
     "rxjs": "^6.2.2",
     "typescript": "^3.0.1"
   },
@@ -58,5 +65,9 @@
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "assets": "src/**/*.graphql"
   }
 }
